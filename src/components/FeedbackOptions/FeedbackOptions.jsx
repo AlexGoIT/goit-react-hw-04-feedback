@@ -1,16 +1,28 @@
 import PropTypes from 'prop-types';
+import Button from '@mui/material/Button';
+import { ThemeProvider } from '@mui/material/styles';
+
 import { OptionsWrapper } from './FeedbackOptions.styled';
+import theme from '../utils/theme';
 
 const FeedbackOptions = ({ onClick, feedbackOptions }) => {
   return (
     <OptionsWrapper>
-      {Object.keys(feedbackOptions).map((key, ind) => {
-        return (
-          <button key={ind} onClick={() => onClick(key)}>
-            {key}
-          </button>
-        );
-      })}
+      <ThemeProvider theme={theme}>
+        {Object.keys(feedbackOptions).map((key, ind) => {
+          return (
+            <Button
+              variant="contained"
+              color={key}
+              key={ind}
+              onClick={() => onClick(key)}
+              sx={{ minWidth: '110px' }}
+            >
+              {key}
+            </Button>
+          );
+        })}
+      </ThemeProvider>
     </OptionsWrapper>
   );
 };
