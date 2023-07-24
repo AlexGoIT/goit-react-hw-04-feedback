@@ -4,16 +4,14 @@ import Section from './Section';
 import FeedbackOptions from './FeedbackOptions';
 import Statistics from './Statistics';
 
+document.title = 'HW-4 Feedback';
+
 export class App extends Component {
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
   };
-
-  componentDidMount() {
-    document.title = 'HW-2 Feedback';
-  }
 
   onClick = option => {
     this.setState(prevState => ({
