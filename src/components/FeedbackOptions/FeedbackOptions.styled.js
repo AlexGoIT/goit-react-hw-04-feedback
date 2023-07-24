@@ -4,7 +4,7 @@ export const OptionsWrapper = styled.div`
   display: flex;
   gap: 10px;
 
-  button {
+  /* button {
     width: 80px;
     height: 40px;
     border-radius: 5px;
@@ -15,9 +15,9 @@ export const OptionsWrapper = styled.div`
     opacity: 0.75;
     cursor: pointer;
     transition: opacity 0.2s ease-in;
-  }
+  } */
 
-  button:nth-child(1) {
+  /* button:nth-child(1) {
     background-color: green;
   }
 
@@ -31,5 +31,5 @@ export const OptionsWrapper = styled.div`
 
   button:hover {
     opacity: 1;
-  }
+  } */
 `;
