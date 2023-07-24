@@ -1,30 +1,9 @@
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 
 import { OptionsWrapper } from './FeedbackOptions.styled';
-
-const theme = createTheme({
-  typography: {
-    button: {
-      fontWeight: 600,
-    },
-  },
-  palette: {
-    good: {
-      main: '#008000',
-      contrastText: '#fff',
-    },
-    neutral: {
-      main: '#ffa500',
-      contrastText: '#fff',
-    },
-    bad: {
-      main: '#ff0000',
-      contrastText: '#fff',
-    },
-  },
-});
+import theme from '../utils/theme';
 
 const FeedbackOptions = ({ onClick, feedbackOptions }) => {
   return (

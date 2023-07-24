@@ -1,11 +1,17 @@
 import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import { ThemeProvider } from '@mui/material/styles';
+import { Typography } from '@mui/material';
 
-import { Box } from './Statistics.styled';
-import StatisticsLayout from './StatisticsLayout';
-import Notification from './Notification';
+// import { Box } from './Statistics.styled';
+import StatisticsLayout from '../StatisticsLayout';
+import Notification from '../Notification';
+import theme from '../utils/theme';
 
 const Statistics = ({ feedbackOptions }) => {
   const { good, neutral, bad } = feedbackOptions;
+  const optionKeys = Object.keys(feedbackOptions);
 
   const totalFeedback = good + neutral + bad;
   const positivePercentage =
@@ -16,15 +22,44 @@ const Statistics = ({ feedbackOptions }) => {
       {totalFeedback === 0 ? (
         <Notification message="No feedback given" />
       ) : (
-        <Box>
-          <p>Good: {good}</p>
-          <p>Neutral: {neutral}</p>
-          <p>Bad: {bad}</p>
-          <p>Total: {totalFeedback}</p>
-          <p>
-            Positive feedback: {positivePercentage ? positivePercentage : 0}%
-          </p>
-        </Box>
+        <>
+          <Grid container spacing={2}>
+            {optionKeys.map(optionKey => (
+              <Grid
+                item
+                key={optionKey}
+                color={optionKey}
+                sx={{
+                  minWidth: 120,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: 1,
+                }}
+              >
+                <ThemeProvider theme={theme}>
+                  <Typography
+                    color={theme.palette[optionKey].main}
+                    sx={{ fontWeight: 600 }}
+                  >
+                    {optionKey}
+                  </Typography>
+                  <Typography color={theme.palette[optionKey].main}>
+                    {feedbackOptions[optionKey]}
+                  </Typography>
+                </ThemeProvider>
+              </Grid>
+            ))}
+          </Grid>
+          <Box sx={{ textAlign: 'center', width: '100%', mt: 2 }}>
+            <Typography sx={{ fontWeight: 600 }}>
+              Total: {totalFeedback}
+            </Typography>
+            <Typography sx={{ fontWeight: 600, mt: 1 }}>
+              Positive feedback: {positivePercentage ? positivePercentage : 0}%
+            </Typography>
+          </Box>
+        </>
       )}
     </StatisticsLayout>
   );
