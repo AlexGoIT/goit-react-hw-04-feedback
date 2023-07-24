@@ -37,6 +37,7 @@ const FeedbackOptions = ({ onClick, feedbackOptions }) => {
               color={key}
               key={ind}
               onClick={() => onClick(key)}
+              sx={{ minWidth: '110px' }}
             >
               {key}
             </Button>
