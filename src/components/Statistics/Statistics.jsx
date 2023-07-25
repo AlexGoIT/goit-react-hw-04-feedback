@@ -12,9 +12,9 @@ const Statistics = ({ options }) => {
   const { good, neutral, bad } = options;
   const optionKeys = Object.keys(options);
 
-  const totalFeedback = good + neutral + bad;
+  const totalFeedback = good + neutral + bad; // Count total feedback
   const positivePercentage =
-    totalFeedback === 0 ? 0 : Math.round((good / totalFeedback) * 100);
+    totalFeedback === 0 ? 0 : Math.round((good / totalFeedback) * 100); // Calculate percentage of positive feedback
 
   return (
     <StatisticsLayout title="Statistics">
@@ -22,7 +22,7 @@ const Statistics = ({ options }) => {
         <Notification message="No feedback given" />
       ) : (
         <>
-          <Grid container spacing={2}>
+          <Grid container>
             {optionKeys.map(optionKey => (
               <Grid
                 item
