@@ -4,14 +4,13 @@ import Grid from '@mui/material/Grid';
 import { ThemeProvider } from '@mui/material/styles';
 import { Typography } from '@mui/material';
 
-// import { Box } from './Statistics.styled';
 import StatisticsLayout from '../StatisticsLayout';
 import Notification from '../Notification';
 import theme from '../utils/theme';
 
-const Statistics = ({ feedbackOptions }) => {
-  const { good, neutral, bad } = feedbackOptions;
-  const optionKeys = Object.keys(feedbackOptions);
+const Statistics = ({ options }) => {
+  const { good, neutral, bad } = options;
+  const optionKeys = Object.keys(options);
 
   const totalFeedback = good + neutral + bad;
   const positivePercentage =
@@ -45,7 +44,7 @@ const Statistics = ({ feedbackOptions }) => {
                     {optionKey}
                   </Typography>
                   <Typography color={theme.palette[optionKey].main}>
-                    {feedbackOptions[optionKey]}
+                    {options[optionKey]}
                   </Typography>
                 </ThemeProvider>
               </Grid>

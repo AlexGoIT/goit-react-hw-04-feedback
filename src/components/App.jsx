@@ -33,11 +33,8 @@ const App = () => {
 
   return (
     <Section title="Please leave feedback">
-      <FeedbackOptions
-        onClick={onClick}
-        feedbackOptions={options}
-      ></FeedbackOptions>
-      <Statistics feedbackOptions={options} />
+      <FeedbackOptions onClick={onClick} options={options}></FeedbackOptions>
+      <Statistics options={options} />
     </Section>
   );
 };

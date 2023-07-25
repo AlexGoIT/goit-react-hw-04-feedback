@@ -5,11 +5,11 @@ import { ThemeProvider } from '@mui/material/styles';
 import { OptionsWrapper } from './FeedbackOptions.styled';
 import theme from '../utils/theme';
 
-const FeedbackOptions = ({ onClick, feedbackOptions }) => {
+const FeedbackOptions = ({ onClick, options }) => {
   return (
     <OptionsWrapper>
       <ThemeProvider theme={theme}>
-        {Object.keys(feedbackOptions).map((key, ind) => {
+        {Object.keys(options).map((key, ind) => {
           return (
             <Button
               variant="contained"
