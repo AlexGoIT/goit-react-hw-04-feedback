@@ -9,16 +9,16 @@ const FeedbackOptions = ({ onClick, options }) => {
   return (
     <OptionsWrapper>
       <ThemeProvider theme={theme}>
-        {Object.keys(options).map((key, ind) => {
+        {Object.keys(options).map((type, ind) => {
           return (
             <Button
               variant="contained"
-              color={key}
+              color={type}
               key={ind}
-              onClick={() => onClick(key)}
+              onClick={() => onClick(type)}
               sx={{ minWidth: '110px' }}
             >
-              {key}
+              {type}
             </Button>
           );
         })}

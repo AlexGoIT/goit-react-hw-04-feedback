@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 
 import Section from './Section';
 import FeedbackOptions from './FeedbackOptions';
@@ -6,34 +6,23 @@ import Statistics from './Statistics';
 
 document.title = 'HW-4 Feedback';
 
+const countFeedbackReducer = (options, action) => {
+  return { ...options, [action.type]: options[action.type] + 1 };
+};
+
 const App = () => {
-  const [good, setGood] = useState(0);
-  const [neutral, setNeutral] = useState(0);
-  const [bad, setBad] = useState(0);
-  const options = { good, neutral, bad };
-
-  const onClick = option => {
-    switch (option) {
-      case 'good':
-        setGood(good => good + 1);
-        break;
-
-      case 'neutral':
-        setNeutral(neutral => neutral + 1);
-        break;
-
-      case 'bad':
-        setBad(bad => bad + 1);
-        break;
-
-      default:
-        return;
-    }
-  };
+  const [options, dispatch] = useReducer(countFeedbackReducer, {
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  });
 
   return (
     <Section title="Please leave feedback">
-      <FeedbackOptions onClick={onClick} options={options}></FeedbackOptions>
+      <FeedbackOptions
+        onClick={type => dispatch({ type })}
+        options={options}
+      ></FeedbackOptions>
       <Statistics options={options} />
     </Section>
   );
